@@ -1,0 +1,7 @@
+$Id: INSTALL.txt 1017 2010-10-24 15:50:42Z mwinston $
+
+1. Copy the 'hsts' module folder to your site's module folder (ex: sites/all/modules or sites/yoursite.com/modules/contrib)
+2. Enable the module from the Site Building -> Modules page or using drush (ex: drush en hsts)
+3. Configure the module from Site Configuration -> HSTS Settings
+
+Hope that helps!

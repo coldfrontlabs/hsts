@@ -1,0 +1,25 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Test cases for HSTS
+ */
+
+class HstsTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => t('HSTS tests'),
+      'description' => t('Test to ensure the Strict Transport Security headers are generated properly.'),
+      'group' => t('HSTS'),
+    );
+  }
+
+  function setUp() {
+    parent::setUp('hsts');
+  }
+  
+  public function testHeaderTest() {
+    
+  }
+}

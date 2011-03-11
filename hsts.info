@@ -1,1 +1,6 @@
+; $Id$
 name = HTTP Strict Transport Security
+description = Enable Strict Transport Security on your Drupal site.
+version = 6.x-1.0-dev
+core = 6.x
+package = Security
