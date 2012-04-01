@@ -1,5 +1,3 @@
-$Id: README.txt 1018 2010-10-24 16:04:32Z mwinston $
-
 Created by mwinstone (coldfrontlabs.ca/blog/mwinstone, twitter.com/mathewwinstone)
 Sponsored by Coldfront Labs
 

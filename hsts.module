@@ -1,5 +1,4 @@
-<?php 
-// $Id$
+<?php
 
 /**
  * @file
@@ -8,7 +7,7 @@
 
 
 /**
- * Implementation of hook_init().
+ * Implements hook_init().
  * 
  * Sets the header in all requests to include the HSTS max-age value
  */
@@ -30,12 +29,15 @@ function hsts_init() {
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_perm().
  */
 function hsts_perm() {
   return array('administer strict transport security');
 }
 
+/**
+ * Implements hook_menu().
+ */
 function hsts_menu() {
   $items = array();
   

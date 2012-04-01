@@ -1,5 +1,4 @@
-<?php 
-// $Id$
+<?php
 
 /**
  * @file
@@ -7,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_form().
+ * Implements hook_form().
  * 
  * Settings form
  */
@@ -46,7 +45,7 @@ function hsts_admin_settings_form() {
 }
 
 /**
- * Implementation of hook_validate().
+ * Implements hook_validate().
  * 
  * @param $form
  * @param $form_state
