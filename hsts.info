@@ -1,10 +1,6 @@
-; $Id$
 name = HTTP Strict Transport Security
 description = Enable Strict Transport Security on your Drupal site.
-version = 7.x-1.0
 core = 7.x
 package = Security
 files[] = hsts.module
-files[] = hsts.admin.inc
-files[] = hsts.install
 configure = admin/config/security/hsts
