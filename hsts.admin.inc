@@ -21,7 +21,7 @@ function hsts_admin_settings_form() {
     '#default_value' => variable_get('hsts_enabled', FALSE),
   );
 
-  $form['max_age'] = array(
+  $form['hsts_max_age'] = array(
     '#type' => 'textfield',
     '#title' => t('Max Age'),
     '#description' => t('The maximum age value for the header in seconds. See the <a href="http://lists.w3.org/Archives/Public/www-archive/2009Sep/att-0051/draft-hodges-strict-transport-sec-05.plain.html#syntax">Strict Transport Security Definition</a> for more information.'),
@@ -47,7 +47,7 @@ function hsts_admin_settings_form() {
  * @param $form_state
  */
 function hsts_admin_settings_form_validate($form, &$form_state) {
-  if (!is_numeric($form_state['values']['max_age']) || intval($form_state['values']['max_age']) < 0 || intval($form_state['values']['max_age'] > 4000000)) {
-    form_set_error('max_age', t('Value is not a number of out of bounds.'));
+  if (!is_numeric($form_state['values']['hsts_max_age']) || intval($form_state['values']['hsts_max_age']) < 0 || intval($form_state['values']['hsts_max_age'] > 4000000)) {
+    form_set_error('hsts_max_age', t('Value is not a number or out of bounds.'));
   }
 }
