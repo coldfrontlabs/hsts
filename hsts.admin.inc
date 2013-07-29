@@ -20,7 +20,7 @@ function hsts_admin_settings_form() {
     '#default_value' => variable_get('hsts_enabled', FALSE),
   );
   
-  $form['max_age'] = array(
+  $form['hsts_max_age'] = array(
     '#type' => 'textfield',
     '#title' => t('Max Age'),
     '#description' => t('The maximum age value for the header in seconds. See the <a href="http://lists.w3.org/Archives/Public/www-archive/2009Sep/att-0051/draft-hodges-strict-transport-sec-05.plain.html#syntax">Strict Transport Security Definition</a> for more information.'),

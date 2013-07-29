@@ -25,10 +25,7 @@ function hsts_install() {
  * Implements hook_uninstall().
  */
 function hsts_uninstall() {
-  
-  // Remove any variables
-  $result = db_query("SELECT name FROM {variable} WHERE name LIKE 'hsts_%'");
-  while ($row = db_fetch_object($result)) {
-    variable_del($row->name);
-  }
+  variable_del('hsts_max_age');
+  variable_del('hsts_enabled');
+  variable_del('hsts_subdomains');
 }
