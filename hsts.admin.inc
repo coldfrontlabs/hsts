@@ -47,7 +47,7 @@ function hsts_admin_settings_form() {
  * @param $form_state
  */
 function hsts_admin_settings_form_validate($form, &$form_state) {
-  if (!is_numeric($form_state['values']['hsts_max_age']) || intval($form_state['values']['hsts_max_age']) < 0 || intval($form_state['values']['hsts_max_age'] > 4000000)) {
+  if (!is_numeric($form_state['values']['hsts_max_age']) || $form_state['values']['hsts_max_age'] < 0) {
     form_set_error('hsts_max_age', t('Value is not a number or out of bounds.'));
   }
 }
