@@ -8,21 +8,21 @@
 
 /**
  * Implements hook_init().
- * 
+ *
  * Sets the header in all requests to include the HSTS max-age value
  */
 function hsts_init() {
   // Set the header to include the HSTS data
   if (variable_get('hsts_enabled', FALSE) == 1) {
-    
+
     // Add the max age header
     $hsts_header = 'Strict-Transport-Security: max-age=' . check_plain(variable_get('hsts_max_age', 500));
     if (variable_get('hsts_subdomains', FALSE)) {
-      
+
       // Include subdomains
-      $hsts .= ';include_subdomains';
+      $hsts .= ';includeSubDomains';
     }
-  
+
     // Add the header
     drupal_set_header($hsts_header);
   }
@@ -40,7 +40,7 @@ function hsts_perm() {
  */
 function hsts_menu() {
   $items = array();
-  
+
   $items['admin/settings/hsts'] = array(
     'title' => 'HTTP Strict Transport Security Settings',
     'page callback' => 'drupal_get_form',
@@ -49,6 +49,6 @@ function hsts_menu() {
     'access arguments' => array('administer strict transport security'),
     'file' => 'hsts.admin.inc',
   );
-  
+
   return $items;
 }
