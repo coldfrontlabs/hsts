@@ -1,6 +1,0 @@
-name = HTTP Strict Transport Security
-description = Enable Strict Transport Security on your Drupal site.
-core = 7.x
-package = Security
-files[] = hsts.module
-configure = admin/config/security/hsts
