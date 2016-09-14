@@ -7,4 +7,4 @@ It'll save you a little extra PHP processing.
 If not, then I hope this module helps you out.
 
 For more information regarding HTTP Strict Transport Security see
-https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
+http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security
