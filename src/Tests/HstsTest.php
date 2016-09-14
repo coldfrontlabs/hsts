@@ -27,7 +27,7 @@ class HstsTest extends RESTTestBase {
    */
   protected function setUp(){
     parent::setUp();
-    $this->web_user = $this->drupalCreateUser(['administer strict transport security']);
+    $this->web_user = $this->drupalCreateUser(['administer hsts']);
     $this->drupalLogin($this->web_user);
   }
 

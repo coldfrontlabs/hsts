@@ -4,4 +4,4 @@ hsts.settings:
     _form: 'Drupal\hsts\Form\HstsConfigForm'
     _title: 'HSTS settings'
   requirements:
-    _permission: 'administer strict transport security'
+    _permission: 'administer hsts'
