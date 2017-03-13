@@ -42,7 +42,7 @@ function hsts_update_7100(&$sandbox) {
   global $is_https;
 
   if (!$is_https) {
-    drupal_set_message(t('HSTS was unable to detect if your site is running over HTTPS. Please check the HSTS configuration.'));
+    drupal_set_message(t('HSTS was unable to detect if your site is running over HTTPS. Please check the HSTS configuration.'), 'warning');
   }
 
   // Safe default is to restrict to HTTPS only.
