@@ -38,7 +38,7 @@ function hsts_uninstall() {
  *
  * Only set HSTS headers on HTTPS connections.
  */
-function hsts_update_N(&$sandbox) {
+function hsts_update_7100(&$sandbox) {
   global $is_https;
 
   if (!$is_https) {
