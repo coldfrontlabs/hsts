@@ -21,6 +21,20 @@ function hsts_admin_settings_form() {
     '#default_value' => variable_get('hsts_enabled', FALSE),
   );
 
+  $form['hsts_https_only'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Restrict the HSTS header only for HTTPS (a.k.a. do not include on HTTP only requests).'),
+    '#description' => t('!url. Check this off only if you are behind an SSL terminated load balancer.', array(
+      '!url' => l(t('For security reasons, an HSTS Host MUST NOT include the STS header field in HTTP responses conveyed over non-secure transport'), 'http://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14#section-7.2', array('external' => TRUE)),
+    )),
+    '#default_value' => variable_get('hsts_https_only', TRUE),
+    '#states' => array(
+      'disabled' => array(
+        ':input[name=hsts_enabled]' => array('checked' => FALSE),
+      ),
+    ),
+  );
+
   $form['hsts_max_age'] = array(
     '#type' => 'textfield',
     '#title' => t('Max Age'),
