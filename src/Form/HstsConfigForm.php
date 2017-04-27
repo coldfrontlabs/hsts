@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\hsts\Form\HstsConfigForm.
- */
-
 namespace Drupal\hsts\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -69,22 +64,22 @@ class HstsConfigForm extends ConfigFormBase {
     $config = $this->config('hsts.settings');
     $form['enabled'] = [
       '#type' => 'checkbox',
-      '#title' => t('Enable HSTS'),
-      '#description' => t('Whether to start adding the HSTS header information or not.'),
+      '#title' => $this->t('Enable HSTS'),
+      '#description' => $this->t('Whether to start adding the HSTS header information or not.'),
       '#default_value' => $config->get('enabled'),
     ];
     $options = [0, 300, 31536000, 63072000, 94608000];
     $form['max_age'] = [
       '#type' => 'select',
-      '#title' => t('Max age'),
-      '#description' => t('The maximum age value for the header. See the <a href="https://tools.ietf.org/html/rfc6797">Strict Transport Security Definition</a> for more information.'),
+      '#title' => $this->t('Max age'),
+      '#description' => $this->t('The maximum age value for the header. See the <a href="https://tools.ietf.org/html/rfc6797">Strict Transport Security Definition</a> for more information.'),
       '#options' => array_map([$this->dateFormatter, 'formatInterval'], array_combine($options, $options)),
       '#default_value' => $config->get('max_age'),
     ];
     $form['subdomains'] = [
       '#type' => 'checkbox',
-      '#title' => t('Include subdomains'),
-      '#description' => t('Whether to include the subdomains as part of the HSTS implementation.'),
+      '#title' => $this->t('Include subdomains'),
+      '#description' => $this->t('Whether to include the subdomains as part of the HSTS implementation.'),
       '#default_value' => $config->get('subdomains'),
     ];
     return parent::buildForm($form, $form_state);
@@ -107,7 +102,7 @@ class HstsConfigForm extends ConfigFormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     if (!is_numeric($form_state->getValue('max_age')) || $form_state->getValue('max_age') < 0) {
-      $form_state->setErrorByName('max_age', t('Value is not a number or out of bounds.'));
+      $form_state->setErrorByName('max_age', $this->t('Value is not a number or out of bounds.'));
     }
     parent::validateForm($form, $form_state);
   }

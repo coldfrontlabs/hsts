@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of Drupal\hsts\Tests\HstsTest.
- */
-
 namespace Drupal\hsts\Tests;
 
 use Drupal\rest\Tests\RESTTestBase;

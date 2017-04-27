@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\hsts\HstsSubscriber.
- */
-
 namespace Drupal\hsts;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
