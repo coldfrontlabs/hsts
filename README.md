@@ -1,5 +1,5 @@
-The Name of My Project
-======================
+HTTP Strict Transport Security
+==============================
 
 This module inserts an HTTP Strict Transport Security header into your Backdrop
 site's pages. For more information regarding HTTP Strict Transport Security, see
@@ -17,6 +17,11 @@ Installation
 - Visit the configuration page under Administration > Configuration > Security >
   HTTP Strict Transport Security Settings (admin/config/security/hsts) and alter
   the default settings as desired.
+
+- If your server is behind an SSL terminated proxy, you can set the HSTS headers
+  to be included on HTTP responses as well. Please be advised, however, that the
+  HSTS specification states that the STS headers should only be included on
+  secure connections.
 
 Issues
 ------
