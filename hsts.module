@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 /**
  * @file
@@ -16,18 +15,20 @@
  */
 function hsts_init() {
   global $is_https;
+  $config = config('hsts.settings');
+  
   // Set the header to include the HSTS data
-  if (TRUE == variable_get('hsts_enabled', FALSE) and (variable_get('hsts_https_only', TRUE) or $is_https)) {
+  if (TRUE == $config->get('enabled') and (!$config->get('https_only') or $is_https)) {
 
     // Add the max age header
-    $hsts_header = 'max-age=' . check_plain(variable_get('hsts_max_age', 500));
-    if (variable_get('hsts_subdomains', FALSE)) {
+    $hsts_header = 'max-age=' . check_plain($config->get('max_age'));
+    if ($config->get('subdomains')) {
 
       // Include subdomains
       $hsts_header .= ';includeSubDomains';
     }
 
-    drupal_add_http_header('Strict-Transport-Security', $hsts_header);
+    backdrop_add_http_header('Strict-Transport-Security', $hsts_header);
   }
 }
 
@@ -38,7 +39,7 @@ function hsts_permission() {
   return array(
     'administer strict transport security' => array(
       'title' => t('Administer Strict Transport Security Settings'),
-      'description' => t('Allow a user to enable/disable the HSTS header as well as the header values.'),
+      'description' => t('Allow a user to enable/disable the HSTS header as well as set the header values.'),
     )
   );
 }
@@ -57,13 +58,13 @@ function hsts_menu() {
     'position' => 'right',
     'access arguments' => array('administer site configuration'),
     'file' => 'system.admin.inc',
-    'file path' => drupal_get_path('module', 'system'),
+    'file path' => backdrop_get_path('module', 'system'),
   );
 
   $items['admin/config/security/hsts'] = array(
     'title' => 'HTTP Strict Transport Security Settings',
     'description' => 'Set header configuration for Strict Transport Security',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('hsts_admin_settings_form'),
     'access arguments' => array('administer strict transport security'),
     'type' => MENU_NORMAL_ITEM,
@@ -80,7 +81,7 @@ function hsts_requirements($phase) {
   $requirements = array();
 
   if ($phase == 'runtime') {
-    $hsts_https_only = variable_get('hsts_https_only', FALSE);
+    $hsts_https_only = config_get('hsts.settings', 'https_only');
     $requirements['hsts_https_only'] = array(
       'title' => t('HTTP Strict Transport Security header restriction only to HTTPS'),
       'value' => $hsts_https_only ? t('Enabled') : t('Disabled'),
@@ -89,4 +90,15 @@ function hsts_requirements($phase) {
   }
 
   return $requirements;
+}
+
+/**
+ * Implements hook_config_info().
+ */
+function hsts_config_info() {
+  $prefixes['hsts.settings'] = array(
+    'label' => t('HTTP Strict Transport Security settings'),
+    'group' => t('Configuration'),
+  );
+  return $prefixes;
 }
