@@ -1,3 +1,4 @@
+type = module
 name = HTTP Strict Transport Security
 description = Enable Strict Transport Security on your Backdrop site.
 backdrop = 1.x
