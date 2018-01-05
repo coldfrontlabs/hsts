@@ -1,0 +1,7 @@
+{
+    "_config_name": "hsts.settings",
+    "enabled": false,
+    "https_only": true,
+    "max_age": "400",
+    "subdomains": false
+}
