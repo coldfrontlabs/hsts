@@ -43,5 +43,13 @@ class HstsTest extends RESTTestBase {
     ];
     $this->drupalPostForm(NULL, $fields, t('Save configuration'));
     $this->assertHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains');
+    $fields = [
+      'enabled' => TRUE,
+      'max_age' => 63072000,
+      'subdomains' => TRUE,
+      'preload' => TRUE,
+    ];
+    $this->drupalPostForm(NULL, $fields, t('Save configuration'));
+    $this->assertHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   }
 }

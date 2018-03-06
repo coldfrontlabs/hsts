@@ -50,6 +50,10 @@ class HstsSubscriber implements EventSubscriberInterface {
       // Include subdomains
       $header .= '; includeSubDomains';
     }
+    if ($this->config->get('preload')) {
+      // Add preload directive.
+      $header .= '; preload';
+    }
     // Add the header.
     $event->getResponse()->headers->set('Strict-Transport-Security', $header);
   }

@@ -87,6 +87,12 @@ class HstsConfigForm extends ConfigFormBase {
       '#description' => t('Whether to include the subdomains as part of the HSTS implementation.'),
       '#default_value' => $config->get('subdomains'),
     ];
+    $form['preload'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Preload'),
+      '#description' => t('The preload directive allows your domain to be submitted for inclusion by browsers at <a href="https://hstspreload.appspot.com/">hstspreload.appspot.com</a>. Do not enable preload unless you are sure you want all sites on your domain to be HTTPS-only for the long term.'),
+      '#default_value' => $config->get('preload'),
+    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -98,6 +104,7 @@ class HstsConfigForm extends ConfigFormBase {
       ->set('enabled', $form_state->getValue('enabled'))
       ->set('max_age', $form_state->getValue('max_age'))
       ->set('subdomains', $form_state->getValue('subdomains'))
+      ->set('preload', $form_state->getValue('preload'))
       ->save();
     parent::submitForm($form, $form_state);
   }

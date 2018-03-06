@@ -11,3 +11,6 @@ hsts.settings:
     subdomains:
       type: boolean
       label: 'Include subdomains'
+    preload:
+      type: boolean
+      label: 'Preload'
